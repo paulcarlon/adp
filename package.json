@@ -1,0 +1,11 @@
+{
+  "name": "adp",
+  "version": "0.6.9",
+  "description": "aubrey digital portfolio",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aubrey Carlon",
+  "license": "ISC"
+}
