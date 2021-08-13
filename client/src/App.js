@@ -1,5 +1,8 @@
 import Home from './views/Home'
 import Shop from './views/Shop'
+import MusicShop from './views/MusicShop'
+import AppShop from './views/AppShop'
+import { AudioPlayer } from './components/AudioPlayer'
 import Music from './views/Music'
 import Dev from './views/Dev'
 import Biography from './views/Biography'
@@ -12,11 +15,18 @@ import './App.css';
 function App() {
   return (
 <Router>
-      <Container className="text-center">
+      <Container fluid className="text-center">
         <Navigation/>
+        <AudioPlayer />
         <Switch>
           <Route path='/shop'>
             <Shop />
+          </Route>
+          <Route path='/musicshop'>
+            <MusicShop />
+          </Route>
+          <Route path='/appshop'>
+            <AppShop />
           </Route>
           <Route path='/music'>
             <Music />

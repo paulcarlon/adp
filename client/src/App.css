@@ -1,12 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 body {
-  /* background: rgba(0, 199, 100, 1) ; */
-  /* background: rgba(34, 34, 111, 1) */
-  /* background-color: rgba(66, 0, 66, 1); */
+
   background-color: #923cb5;
 background-image: linear-gradient(17deg, #923cb5 0%, rgba(66, 0, 66, 1) 74%);
-  /* background: rgb(144, 144, 144, .9) */
 }
 
+.isHovered {
+  cursor:pointer;
+  transform: scale(.97);
+}
+
+.disabled-link {
+  cursor: not-allowed;
+}
+
+a {
+  text-decoration: none;
+  /* color: rgb(172, 172, 172); */
+  color: #fff !important;
+  font-size: 3em;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: none;
+  /* transform: scale(.98); */
+  color: rgba(66, 0, 66, .7) !important;
+  text-shadow: 1px 1px 4px #fff;
+
+}
+
+a:visited {
+  color: #000;
+}
 .App {
   text-align: center;
 }
@@ -37,6 +67,18 @@ background-image: linear-gradient(17deg, #923cb5 0%, rgba(66, 0, 66, 1) 74%);
   color: #61dafb;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(66, 0, 66, 1);
+  border-radius: 10px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

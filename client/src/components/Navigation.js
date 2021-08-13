@@ -7,6 +7,8 @@ import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 const Navigation = () => {
   return (
     <Navbar
+    style={{ backgroundColor: '#923cb5', marginTop: '1em',
+    backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)', borderRadius: '10px', opacity: '100%' }}
     sticky="top"
     className="text-white mb-3 rounded"
       collapseOnSelect
@@ -27,17 +29,16 @@ const Navigation = () => {
         }}
         aria-controls='responsive-navbar-nav'
       />
-      <Navbar.Collapse style={{ marginTop: '1.1em', backgroundColor: '#923cb5',
-backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)', borderRadius: '6px' }}>
-        <Nav style={{ width: '100%', fontSize: '1.2em' }}>
+      <Navbar.Collapse style={{ marginTop: '1.1em' }}>
+        <Nav style={{ width: '100%'}}>
         <LinkContainer to='/shop'>
-            <Nav.Link className="p-4"><p style={{ fontSize: '1.5em', fontWeight: '600', color: '#fff'}}>Shop</p></Nav.Link>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Shop</p></Nav.Link>
           </LinkContainer>
           <LinkContainer to='/dev'>
-            <Nav.Link className="p-4"><p style={{ fontSize: '1.5em', fontWeight: '600', color: '#fff'}}>Web Design</p></Nav.Link>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Web Design</p></Nav.Link>
           </LinkContainer>
           <LinkContainer to='/music'>
-            <Nav.Link className="p-4"><p style={{ fontSize: '1.5em', fontWeight: '600', color: '#fff'}}>Music</p></Nav.Link>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Music</p></Nav.Link>
           </LinkContainer>
           {/* <NavDropdown className="p-3 text-dark" title='Music'>
             <LinkContainer style= {{ backgroundColor: 'rgba(150, 150, 150, 1', fontSize: '1.4em'  }} to='/songs'>
@@ -52,7 +53,7 @@ backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)'
             </LinkContainer>
           </NavDropdown> */}
           <LinkContainer to='/biography'>
-            <Nav.Link className="p-4"><p style={{ fontSize: '1.5em', fontWeight: '600', color: '#fff'}}>Biography</p></Nav.Link>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Biography</p></Nav.Link>
           </LinkContainer>
           {/* </div> */}
           <div className='d-flex mx-auto justify-content-between p-4'>
@@ -61,7 +62,7 @@ backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)'
               target='_blank'
               rel='noreferrer'
             >
-              <FaFacebook style={{ fontSize: '1.5em', color: '#fff', fontWeight: '600'  }} />
+              <FaFacebook style={{ fontSize: '.8em', fontWeight: '600'  }} />
             </a>
             <a
               href='https://www.instagram.com/aubreydigitallv'
@@ -70,7 +71,7 @@ backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)'
             >
               <FaInstagram
                 className='mx-5'
-                style={{ textShadow: '0px 0px 5px #fff', color: '#fff', fontSize: '1.5em', fontWeight: '600',  }}
+                style={{ fontSize: '.8em', fontWeight: '600',  }}
               />
             </a>
             <a
@@ -78,7 +79,7 @@ backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)'
               target='_blank'
               rel='noreferrer'
             >
-              <FaTwitter style={{ textShadow: '0px 0px 5px #fff', color: '#fff', fontSize: '1.5em', fontWeight: '600',   }} />
+              <FaTwitter style={{ fontSize: '.8em', fontWeight: '600',   }} />
             </a>
             </div>
             {/* <div className="mb-4">
