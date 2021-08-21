@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 // import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
-import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaTwitter, FaFacebook, FaInstagram, FaGithub, FaSoundcloud } from 'react-icons/fa';
 
 const Navigation = () => {
   return (
@@ -29,16 +29,14 @@ const Navigation = () => {
         }}
         aria-controls='responsive-navbar-nav'
       />
-      <Navbar.Collapse style={{ marginTop: '1.1em' }}>
+      <Navbar.Collapse style={{ marginTop: '1.5em', }}>
         <Nav style={{ width: '100%'}}>
-        <LinkContainer to='/shop'>
-            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Shop</p></Nav.Link>
-          </LinkContainer>
+        
           <LinkContainer to='/dev'>
-            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Web Design</p></Nav.Link>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.6em', fontWeight: '600', }}>Web Apps</p></Nav.Link>
           </LinkContainer>
-          <LinkContainer to='/music'>
-            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Music</p></Nav.Link>
+          <LinkContainer to='/collab'>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.6em', fontWeight: '600', }}>Collaborate</p></Nav.Link>
           </LinkContainer>
           {/* <NavDropdown className="p-3 text-dark" title='Music'>
             <LinkContainer style= {{ backgroundColor: 'rgba(150, 150, 150, 1', fontSize: '1.4em'  }} to='/songs'>
@@ -53,16 +51,23 @@ const Navigation = () => {
             </LinkContainer>
           </NavDropdown> */}
           <LinkContainer to='/biography'>
-            <Nav.Link className="p-3"><p style={{ fontSize: '.8em', fontWeight: '600', }}>Biography</p></Nav.Link>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.6em', fontWeight: '600', }}>Biography</p></Nav.Link>
           </LinkContainer>
           {/* </div> */}
-          <div className='d-flex mx-auto justify-content-between p-4'>
-            <a
+          <div className='d-flex pb-2 px-3 justify-content-between'>
+            {/* <a
               href='https://www.facebook.com/aubreydigital'
               target='_blank'
               rel='noreferrer'
             >
               <FaFacebook style={{ fontSize: '.8em', fontWeight: '600'  }} />
+            </a> */}
+            <a
+              href='https://www.github.com/paulcarlon'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <FaGithub style={{ fontWeight: '600'  }} />
             </a>
             <a
               href='https://www.instagram.com/aubreydigitallv'
@@ -71,7 +76,7 @@ const Navigation = () => {
             >
               <FaInstagram
                 className='mx-5'
-                style={{ fontSize: '.8em', fontWeight: '600',  }}
+                style={{ fontWeight: '600',  }}
               />
             </a>
             <a
@@ -79,7 +84,14 @@ const Navigation = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <FaTwitter style={{ fontSize: '.8em', fontWeight: '600',   }} />
+              <FaTwitter style={{ fontWeight: '600', marginRight: '.7em'   }} />
+            </a>
+            <a
+              href='https://soundcloud.com/aubreydigital'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <FaSoundcloud style={{ fontSize: '1.2em', fontWeight: '600'   }} />
             </a>
             </div>
             {/* <div className="mb-4">

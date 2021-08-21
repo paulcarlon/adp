@@ -28,7 +28,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  /* transform: scale(.98); */
+  transform: scale(.98);
   color: rgba(66, 0, 66, .7) !important;
   text-shadow: 1px 1px 4px #fff;
 

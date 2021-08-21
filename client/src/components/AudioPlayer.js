@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import { FaPlay } from "react-icons/fa"
 import { FaPause } from "react-icons/fa"
 import iDRM from '../audio/iDRM.mp3'
+import controlverse from '../audio/controlverse.mp3'
 
 const AudioPlayer = () => {
   // state
@@ -73,12 +74,12 @@ const AudioPlayer = () => {
   return (
     <div style={{ maxHeight: '80px', width: '95vw' }}>
       <Row className="mx-auto w-50"><Col sm={7}>
-      <audio ref={audioPlayer} src={iDRM} preload="metadata"></audio>
+      <audio ref={audioPlayer} src={controlverse} preload="metadata"></audio>
       {/* <button  onClick={backThirty}><BsArrowLeftShort /> 30</button> */}
-      <h4 style={{ color: 'rgba(255, 255, 255, 1)', padding: '5px', borderRadius: '6px', backgroundColor: 'rgba(255,255,255, .2)', fontFamily: 'sans-serif', textWrap: 'nowrap', fontSize: '1em'}}>It Don't Really Matter</h4>
+      <h4 style={{ color: 'rgba(255, 255, 255, 1)', padding: '5px', borderRadius: '6px', backgroundColor: 'rgba(255,255,255, .2)', fontFamily: 'sans-serif', textWrap: 'nowrap', fontSize: '1em'}}>Control(verse)</h4>
       </Col><Col sm={1}>
       <button style={{ color: 'rgba(0,0,0, .9)', padding: '5px', borderRadius: '6px', justifyContent: 'center', alignContent: 'center',  alignItems: 'center', backgroundColor: 'rgba(255,255,255, .4)',  fontFamily: 'sans-serif', fontWeight: '600', fontSize: '1em' }} onClick={togglePlayPause} >
-        {isPlaying ? <FaPause /> : <FaPlay />}
+        {isPlaying ? <FaPause style={{ fontSize: '1em', width: '25px', height: '15px', borderRadius: '10px' }} /> : <FaPlay style={{ fontSize: '1em', width: '25px', height: '15px', borderRadius: '10px' }} />}
         {/* {isPlaying ? 'Pause' : 'Play'} */}
 
       </button>
