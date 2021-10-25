@@ -1,7 +1,5 @@
-import MediaRecorder from "./MediaRecorder";
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import collab from '../images/breathe.gif'
 const RecordAVerse = () => {
@@ -13,7 +11,7 @@ const RecordAVerse = () => {
       </Card.Header>
       <Card.Body>
         <Link to='/record'>
-        <img src={collab} style={{ width: '350px' }} />
+        <img alt='collab' src={collab} style={{ width: '350px' }} />
         </Link>
       </Card.Body>
     </Card>

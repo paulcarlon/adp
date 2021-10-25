@@ -1,10 +1,10 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-// import NavDropdown from 'react-bootstrap/NavDropdown'
+import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap';
-import { FaTwitter, FaFacebook, FaInstagram, FaGithub, FaSoundcloud } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaGithub, FaSoundcloud } from 'react-icons/fa';
 
-const Navigation = () => {
+const Navigation = ({ isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin }) => {
   return (
     <Navbar
     style={{ backgroundColor: '#923cb5', marginTop: '1em',
@@ -20,6 +20,13 @@ const Navigation = () => {
           <h1 style={{ color: '#fff', marginTop: '.6em', marginLeft: '15px', textShadow: '0px 0px 6px rgba(255,192, 203, 1)' }}>aubrey digital</h1>
         </Navbar.Brand>
       </LinkContainer>
+      {isLoggedIn && <Button onClick={() => {
+        setIsLoggedIn(false)
+        setIsAdmin(false)
+        }} style={{ backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)', border: '1px solid #fff' }}>Logout</Button>}
+      {isAdmin && 
+              <LinkContainer to='/addPost'>
+              <Button style={{ backgroundImage: 'linear-gradient(217deg, #923cb5 0%, rgba(66, 0, 66, .93) 74%)', border: '1px solid #fff' }}>Add Post</Button></LinkContainer>}
       <Navbar.Toggle
         className='border rounded p-2 me-4 mb-2'
         style={{
@@ -35,8 +42,8 @@ const Navigation = () => {
           <LinkContainer to='/dev'>
             <Nav.Link className="p-3"><p style={{ fontSize: '.6em', fontWeight: '600', }}>Web Apps</p></Nav.Link>
           </LinkContainer>
-          <LinkContainer to='/collab'>
-            <Nav.Link className="p-3"><p style={{ fontSize: '.6em', fontWeight: '600', }}>Collaborate</p></Nav.Link>
+          <LinkContainer to='/blog'>
+            <Nav.Link className="p-3"><p style={{ fontSize: '.6em', fontWeight: '600', }}>Blog</p></Nav.Link>
           </LinkContainer>
           {/* <NavDropdown className="p-3 text-dark" title='Music'>
             <LinkContainer style= {{ backgroundColor: 'rgba(150, 150, 150, 1', fontSize: '1.4em'  }} to='/songs'>

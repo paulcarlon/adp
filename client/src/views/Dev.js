@@ -39,7 +39,8 @@ const Dev = () => {
       <h1 style={{  color: '#fff', fontWeight: '600', textShadow: '1px 1px 5px #000', fontFamily: 'Indie Flower, cursive' }}>Shannon Beelman Photography</h1>
     </div>
     </a>
-    </Col><Col xs={12} lg={4}>
+    </Col>
+    {/* <Col xs={12} lg={4}>
     <a href="https://paulcarlon.com" rel="noreferrer" target="_blank">
     <div style={{ display: 'flex',
         flexDirection: 'column',
@@ -52,7 +53,7 @@ const Dev = () => {
       <h1 style={{  color: '#fff', fontWeight: '600', textShadow: '1px 1px 5px #000', fontFamily: 'Indie Flower, cursive' }}>Paul Carlon</h1>
     </div>
     </a>
-    </Col>
+    </Col> */}
     <Col xs={12} lg={4}>
     <a href="https://www.sewenhanced.com" rel="noreferrer" target="_blank">
     <div style={{ display: 'flex',

@@ -1,24 +1,31 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 // import { BsArrowLeftShort } from "react-icons/bs"
 // import { BsArrowRightShort } from "react-icons/bs"
-import { FaPlay } from "react-icons/fa"
+import { FaBackward, FaPlay, FaForward } from "react-icons/fa"
 import { FaPause } from "react-icons/fa"
 import iDRM from '../audio/iDRM.mp3'
-import controlverse from '../audio/controlverse.mp3'
+import refresh from '../audio/refresh-full.mp3'
+import salt from '../audio/salt.mp3'
+import seasonsChange from '../audio/seasonsChangenew.mp3'
+import bringItOnHome from '../audio/bringItOnHome.mp3'
 
 const AudioPlayer = () => {
   // state
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-
+  const [song, setSong] = useState(iDRM)
+  const [songText, setSongText] = useState("It Don't Really Matter")
+  // const [songs] = useState([iDRM, salt, seasonsChange, refresh])
   // references
   const audioPlayer = useRef();   // reference our audio component
   const progressBar = useRef();   // reference our progress bar
   const animationRef = useRef();  // reference the animation
-
+let noMoError = currentTime
+console.log(noMoError);
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
@@ -70,20 +77,49 @@ const AudioPlayer = () => {
   //   progressBar.current.value = Number(progressBar.current.value + 30);
   //   changeRange();
   // }
+  const handleLastSong = () => {
+    if (song === iDRM) {
+      setSong(seasonsChange);
+      setSongText("Season's Change")
+      setIsPlaying(false)
+    }
+    else if (song === seasonsChange) {
+    setSong(salt)
+        setSongText('Salt')
+      setIsPlaying(false)
 
+  } else if (song === salt) {
+    setSong(refresh)
+    setSongText('Refresh')
+    setIsPlaying(false)
+
+  } else if (song === refresh) {
+  setSong(bringItOnHome)
+  setSongText('Bring It On Home (Sam Cooke)')
+  setIsPlaying(false)
+
+}
+    else {
+    setSong(iDRM)
+        setSongText("It Don't Really Matter")
+        setIsPlaying(false)
+
+      }
+}
   return (
-    <div style={{ maxHeight: '80px', width: '95vw' }}>
-      <Row className="mx-auto w-50"><Col sm={7}>
-      <audio ref={audioPlayer} src={controlverse} preload="metadata"></audio>
+    <Container fluid>
+      <Row><Col xs={1}><FaBackward style={{ cursor: 'pointer', color: 'rgba(200, 200, 0, 0.3)'}} onClick={handleLastSong} /></Col><Col xs={10}>
+      <audio ref={audioPlayer} src={song} preload="metadata"></audio>
       {/* <button  onClick={backThirty}><BsArrowLeftShort /> 30</button> */}
-      <h4 style={{ color: 'rgba(255, 255, 255, 1)', padding: '5px', borderRadius: '6px', backgroundColor: 'rgba(255,255,255, .2)', fontFamily: 'sans-serif', textWrap: 'nowrap', fontSize: '1em'}}>Control(verse)</h4>
-      </Col><Col sm={1}>
-      <button style={{ color: 'rgba(0,0,0, .9)', padding: '5px', borderRadius: '6px', justifyContent: 'center', alignContent: 'center',  alignItems: 'center', backgroundColor: 'rgba(255,255,255, .4)',  fontFamily: 'sans-serif', fontWeight: '600', fontSize: '1em' }} onClick={togglePlayPause} >
-        {isPlaying ? <FaPause style={{ fontSize: '1em', width: '25px', height: '15px', borderRadius: '10px' }} /> : <FaPlay style={{ fontSize: '1em', width: '25px', height: '15px', borderRadius: '10px' }} />}
+      <h4 style={{ color: 'rgba(255, 255, 255, 1)', padding: '5px', borderRadius: '6px', backgroundColor: 'rgba(255,255,255, .2)', fontFamily: 'sans-serif', textWrap: 'nowrap', fontSize: '1em'}}>{songText}</h4>
+    
+      </Col><Col xs={1}><FaForward style={{ cursor: 'pointer', color: 'rgba(200, 200, 0, 0.3)'}}disabled onClick={handleLastSong}/></Col></Row><Row className=""><Col xs={12}>
+      <button style={{ color: 'rgba(0,0,0, .9)', padding: '5px', borderRadius: '6px', backgroundColor: 'rgba(255,255,255, .4)',  fontFamily: 'sans-serif', fontSize: '.5em', height: '25px' }} onClick={togglePlayPause} >
+        {isPlaying ? <FaPause /> : <FaPlay  />}
         {/* {isPlaying ? 'Pause' : 'Play'} */}
 
       </button>
-      </Col><Col sm={3}>
+      </Col></Row><Row><Col xs={12}>
       {/* <button  onClick={forwardThirty}>30 <BsArrowRightShort /></button> */}
 
       {/* current time */}
@@ -97,7 +133,7 @@ const AudioPlayer = () => {
       {/* duration */}
       {/* <div style={{ color: '#fff' }}>{(duration && !isNaN(duration)) && calculateTime(duration)}</div> */}
       </Col></Row>
-    </div>
+      </Container>
   )
 }
 

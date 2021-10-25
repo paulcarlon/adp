@@ -19,8 +19,8 @@ const MediaRecorder = () => {
     // const listItems = useRef([]);
 
     const [listItems, setListItems] = useState([]);
-    const [onlyAudio, setOnlyAudio] = useState(false);
-    const [isVideo, setIsVideo] = useState(true);
+    const [onlyAudio, setOnlyAudio] = useState(true);
+    const [isVideo, setIsVideo] = useState(false);
     const [isRecord, setIsRecord] = useState(false);
     const [isStart, setIsStart] = useState(false);
     const [count, setCount] = useState(0);
@@ -212,6 +212,7 @@ const MediaRecorder = () => {
         recorder.current.stop();
         recorder.current.ondataavailable = (e) => {
             chunks.current = [];
+            console.log(e);
             chunks.current.push(e.data);
             if (recorder.current.state === 'inactive') recordToList();
         };
