@@ -7,25 +7,24 @@ import Container from 'react-bootstrap/Container'
 import { FaBackward, FaPlay, FaForward } from "react-icons/fa"
 import { FaPause } from "react-icons/fa"
 import iDRM from '../audio/iDRM.mp3'
+import breeze from '../audio/breeze.mp3'
 import refresh from '../audio/refresh-full.mp3'
 import salt from '../audio/salt.mp3'
 import seasonsChange from '../audio/seasonsChangenew.mp3'
-import bringItOnHome from '../audio/bringItOnHome.mp3'
-
 const AudioPlayer = () => {
   // state
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [song, setSong] = useState(iDRM)
-  const [songText, setSongText] = useState("It Don't Really Matter")
+  const [song, setSong] = useState(breeze)
+  const [songText, setSongText] = useState("Breeze")
   // const [songs] = useState([iDRM, salt, seasonsChange, refresh])
   // references
   const audioPlayer = useRef();   // reference our audio component
   const progressBar = useRef();   // reference our progress bar
   const animationRef = useRef();  // reference the animation
 let noMoError = currentTime
-console.log(noMoError);
+// console.log(noMoError);
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
@@ -78,7 +77,12 @@ console.log(noMoError);
   //   changeRange();
   // }
   const handleLastSong = () => {
-    if (song === iDRM) {
+    if (song === breeze) {
+      setSong(iDRM);
+      setSongText("It Don't Really Matter")
+      setIsPlaying(false)
+    }
+    else if (song === iDRM) {
       setSong(seasonsChange);
       setSongText("Season's Change")
       setIsPlaying(false)
@@ -94,8 +98,8 @@ console.log(noMoError);
     setIsPlaying(false)
 
   } else if (song === refresh) {
-  setSong(bringItOnHome)
-  setSongText('Bring It On Home (Sam Cooke)')
+  setSong(breeze)
+  setSongText('Breeze')
   setIsPlaying(false)
 
 }
@@ -107,8 +111,8 @@ console.log(noMoError);
       }
 }
   return (
-    <Container fluid>
-      <Row><Col xs={1}><FaBackward style={{ cursor: 'pointer', color: 'rgba(200, 200, 0, 0.3)'}} onClick={handleLastSong} /></Col><Col xs={10}>
+    <Container style={{ width: '100%', marginTop: '-.5em' }}>
+      <Row style={{ textAlign:'center', alignItems: 'center', justifyContent: 'center' }}><Col xs={1}><FaBackward style={{ cursor: 'pointer', color: 'rgba(200, 200, 0, 0.3)'}} onClick={handleLastSong} /></Col><Col xs={5}>
       <audio ref={audioPlayer} src={song} preload="metadata"></audio>
       {/* <button  onClick={backThirty}><BsArrowLeftShort /> 30</button> */}
       <h4 style={{ color: 'rgba(255, 255, 255, 1)', padding: '5px', borderRadius: '6px', backgroundColor: 'rgba(255,255,255, .2)', fontFamily: 'sans-serif', textWrap: 'nowrap', fontSize: '1em'}}>{songText}</h4>

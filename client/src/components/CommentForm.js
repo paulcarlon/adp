@@ -1,10 +1,11 @@
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 const CommentForm = ({ setIsLoggedIn, isLoggedIn, loggedUser, pid }) => {
-  // const [user, setUser] = useState('');
+  const [user, setUser] = useState('');
   const [comment, setComment] = useState('');
+  let history = useHistory();
 
     const fetchData = async () => {
     const res = await fetch('https://aubrey.digital/phpAPI/api/comments/')
@@ -16,7 +17,7 @@ const CommentForm = ({ setIsLoggedIn, isLoggedIn, loggedUser, pid }) => {
   const onSubmit = async (e) => {
       e.preventDefault();
       console.log(comment)
-      let newComment = { pid, user: loggedUser, comment };       
+      let newComment = { pid, user, comment };       
       console.log(newComment);
         try {
           await fetch('https://aubrey.digital/phpAPI/api/comments/create.php', {
@@ -31,7 +32,8 @@ const CommentForm = ({ setIsLoggedIn, isLoggedIn, loggedUser, pid }) => {
           console.log("Comment not added!");
         }
         fetchData()
-        window.location.href = '/blog';
+        console.log(pid);
+        history.push(`/blog`);
         // setIsLoggedIn(true)
       }
 
@@ -40,7 +42,6 @@ const CommentForm = ({ setIsLoggedIn, isLoggedIn, loggedUser, pid }) => {
     <>
 
     <div className="container text-center">
-    {isLoggedIn ? 
       <Form onSubmit={onSubmit} >
         <Form.Group controlId='userBody'>
         
@@ -62,10 +63,10 @@ const CommentForm = ({ setIsLoggedIn, isLoggedIn, loggedUser, pid }) => {
           >
             Add a comment below:
           </Form.Label>
-
+          <input type="text" name="user" style={{ borderRadius: '10px', textAlign: 'center' }} placeholder="Username" value={user} onChange={(e) => setUser(e.target.value)}></input>
           <textarea
           className="mx-auto"
-            style={{ display: 'flex', height: '13em', borderRadius: '10px', width: '40vw', textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}
+            style={{ display: 'flex', height: '5em', borderRadius: '10px', width: '20vw', textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}
             type='text'
             name='comment'
             placeholder='Your comment goes here!'
@@ -86,7 +87,7 @@ const CommentForm = ({ setIsLoggedIn, isLoggedIn, loggedUser, pid }) => {
             value='Submit'
           ></input>
         </Form.Group>
-      </Form> : <Link to="/login">Login</Link> }
+      </Form>
     </div>
     </>
   );

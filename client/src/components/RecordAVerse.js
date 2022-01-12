@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
-import collab from '../images/breathe.gif'
 const RecordAVerse = () => {
   return (
 <Container fluid>
@@ -11,7 +10,7 @@ const RecordAVerse = () => {
       </Card.Header>
       <Card.Body>
         <Link to='/record'>
-        <img alt='collab' src={collab} style={{ width: '350px' }} />
+        {/* <img alt='collab' src={collab} style={{ width: '350px' }} /> */}
         </Link>
       </Card.Body>
     </Card>

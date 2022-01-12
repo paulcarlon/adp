@@ -1,12 +1,18 @@
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import AddImage from './AddImage';
+import {Row, Col} from 'react-bootstrap';
+import { useState, useRef} from 'react';
+import { useHistory} from 'react-router-dom'
 
 const AddPost = ({ posts, setPosts, getPosts }) => {
+  let history = useHistory();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const [category_id] = useState(1);
-  const [file, setFile] = useState('');
-
+  const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
+  // const file = useRef();
+  
+  
     const fetchData = async () => {
     const res = await fetch('https://aubrey.digital/phpAPI/api/posts/')
     const data = await res.json();
@@ -39,9 +45,21 @@ const AddPost = ({ posts, setPosts, getPosts }) => {
   //     }
   // }
   const onSubmit = async (e) => {
+
       e.preventDefault();
-      let newPost = { title, body, image: file.name, category_id };
-        
+      let category_id
+      if (category.toLowerCase() === 'programming') {
+        category_id = 1;
+      } else if (category.toLowerCase() === 'music') {
+        category_id = 2;
+      } else if (category.toLowerCase() === 'travel') {
+        category_id = 3;
+      }
+      // let newPost = { title, body, image: file.current.files[0].name, category_id };
+      // let blogImg = `https://aubrey.digital/phpAPI/api/images/uploads/${image}`
+      setImage()
+      let newPost = { title, body, image: `https://aubrey.digital/phpAPI/uploads/${image}`, category_id}
+        console.log(newPost);
         try {
           await fetch('https://aubrey.digital/phpAPI/api/posts/create.php', {
           method: 'POST',
@@ -52,30 +70,15 @@ const AddPost = ({ posts, setPosts, getPosts }) => {
           body: JSON.stringify(newPost)
           });
         } catch (err) {
-          console.log(file.name);
+          console.log(image.name);
         }
-        // fetchData()
-        // window.location.href = '/blog';
+        fetchData()
+        history.push('/blog');
       }
-      const onImage = async (e) => {
-        e.preventDefault();
+      
+      // const uploader = async() => {
 
-          try {
-            await fetch('https://aubrey.digital/phpAPI/api/posts/upload.php', {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-      'Content-Type': 'multipart/form-data'
-            },
-            body: JSON.stringify(file)
-            });
-          } catch (err) {
-            console.log(file.name);
-          }
-          fetchData()
-          // window.location.href = '/blog';
-        }
-
+      // }
   
   return (
     <>
@@ -90,45 +93,53 @@ const AddPost = ({ posts, setPosts, getPosts }) => {
       </h3>
       </div>
       </div>
+      <AddImage image={image} setImage={setImage} />
       <Form onSubmit={onSubmit} className='mt-5'>
         <Form.Group controlId='titleBody'>
-        
+      <Row className="my-5">
+        <Col>
           <Form.Label
           >
             Title:
           </Form.Label>
           <input
-            className='rounded'
+          className="w-75 h-100"
+            style={{ borderRadius: '10px', textAlign: 'center' }}
             name='title'
             type='text'
             placeholder='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           ></input>
-          <br />
-          <Form.Label
-            
-          >
-            {/* Body: */}
+          </Col>
+          </Row>
+          <Row className="my-5"><Col>
+          <Form.Label>
+            Category:
           </Form.Label>
-
+          <input
+          className="text-center h-100"
+            style={{ borderRadius: '10px'}}
+            name='title'
+            type='text'
+            placeholder='title'
+            value={category}
+            onChange={(e) => setCategory(e.target.value)} /></Col>
+</Row>
+<Row>
+  <Col sm={12}>
           <textarea
-            style={{ height: '13em', width: '70vw', textAlign: 'center', alignItems: 'center' }}
+          className="my-3"
+            style={{ borderRadius: '10px', height: '13em', width: '60vw', textAlign: 'center', alignItems: 'center' }}
             type='text'
             name='body'
             placeholder='Your message to the world goes here!'
             value={body}
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
-          <br />         
-          <div className="form-group">
-        <label>Post Image</label><br />
-        <Form onSubmit={onImage}>
-        <input type="file" name="fileToUpload" id="fileToUpload" onChange={(e) => setFile(e.target.files[0])} />
-  <input className="mb-3" type="submit" value="Upload image" name="submit-image" />
-
-        </Form>
-    </div>
+          </Col>
+          </Row>
+          
         </Form.Group>
         <Form.Group controlId='submit'>
           <input
